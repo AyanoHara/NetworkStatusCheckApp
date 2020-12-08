@@ -10,6 +10,7 @@ import Reachability
 
 class ViewController: UIViewController {
     
+    @IBOutlet weak var statusMessageLabel: UILabel!
     @IBOutlet weak var networkStatusImage: UIImageView!
     
     let reachability = try! Reachability()
@@ -27,6 +28,7 @@ class ViewController: UIViewController {
     func changeOffline() {
         reachability.whenUnreachable = { [self] reachability in
             networkStatusImage.image = errorImage
+            statusMessageLabel.text = "インターネット接続がありません！！"
             showAlertOffline()
             print("接続なし")
         }
@@ -38,9 +40,11 @@ class ViewController: UIViewController {
         reachability.whenReachable = { [self] reachability in
             if reachability.connection == .cellular {
                 networkStatusImage.image = networkImage
+                statusMessageLabel.text = "キャリア回線を使用しています！"
                 print("キャリア回線接続あり")
             } else {
                 networkStatusImage.image = wifiImage
+                statusMessageLabel.text = "Wi-Fiを使用しています！"
                 print("Wi-Fi接続あり")
             }
         }
