@@ -24,6 +24,7 @@ class ViewController: UIViewController {
             networkStatusImage.image = networkImage
             print("キャリアの回線に接続しています")
         case .wifi:
+            //Wi-Fiとキャリアどちらも接続されている場合は、Wi-Fiが優先される
             networkStatusImage.image = wifiImage
             print("Wi-Fi に接続しています")
         case .unavailable:
