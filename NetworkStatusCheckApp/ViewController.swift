@@ -12,26 +12,35 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var networkStatusImage: UIImageView!
     
+    let reachability = try! Reachability()
     let networkImage = #imageLiteral(resourceName: "network")
     let wifiImage = #imageLiteral(resourceName: "wi-fi")
     let errorImage = #imageLiteral(resourceName: "error")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let reachability = try! Reachability()
-        switch reachability.connection {
-        case .cellular:
-            networkStatusImage.image = networkImage
-            print("キャリアの回線に接続しています")
-        case .wifi:
-            //Wi-Fiとキャリアどちらも接続されている場合は、Wi-Fiが優先される
-            networkStatusImage.image = wifiImage
-            print("Wi-Fi に接続しています")
-        case .unavailable:
+        changeOffline()
+        changeOnline()
+    }
+    
+    func changeOffline() {
+        reachability.whenUnreachable = { [self] reachability in
             networkStatusImage.image = errorImage
-            print("インターネットに接続されていません")
-        case .none:
-            break
+            print("接続なし")
         }
+        try? reachability.startNotifier()
+    }
+    
+    func changeOnline() {
+        reachability.whenReachable = { [self] reachability in
+            if reachability.connection == .cellular {
+                networkStatusImage.image = networkImage
+                print("キャリア回線接続あり")
+            } else {
+                networkStatusImage.image = wifiImage
+                print("Wi-Fi接続あり")
+            }
+        }
+        try? reachability.startNotifier()
     }
 }
