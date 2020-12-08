@@ -1,0 +1,6 @@
+framework module Pods_NetworkStatusCheckApp {
+  umbrella header "Pods-NetworkStatusCheckApp-umbrella.h"
+
+  export *
+  module * { export * }
+}
