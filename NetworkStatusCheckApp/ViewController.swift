@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Reachability
 
 class ViewController: UIViewController {
     
@@ -17,7 +18,19 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        networkStatusImage.image = networkImage
+        let reachability = try! Reachability()
+        switch reachability.connection {
+        case .cellular:
+            networkStatusImage.image = networkImage
+            print("キャリアの回線に接続しています")
+        case .wifi:
+            networkStatusImage.image = wifiImage
+            print("Wi-Fi に接続しています")
+        case .unavailable:
+            networkStatusImage.image = errorImage
+            print("インターネットに接続されていません")
+        case .none:
+            break
+        }
     }
 }
