@@ -23,6 +23,7 @@ class ViewController: UIViewController {
         changeOnline()
     }
     
+    //online → offlineの状態変化で呼ばれる
     func changeOffline() {
         reachability.whenUnreachable = { [self] reachability in
             networkStatusImage.image = errorImage
@@ -32,6 +33,7 @@ class ViewController: UIViewController {
         try? reachability.startNotifier()
     }
     
+    //offline → onlineの状態変化で呼ばれる
     func changeOnline() {
         reachability.whenReachable = { [self] reachability in
             if reachability.connection == .cellular {
@@ -45,11 +47,13 @@ class ViewController: UIViewController {
         try? reachability.startNotifier()
     }
     
+    //オフライン時にのみ呼ばれるアラート
     func showAlertOffline() {
         let alert = UIAlertController(title: "エラー", message: "インターネット接続状況を確認して再度お試しください。", preferredStyle: .alert)
         let reloadAction = UIAlertAction(title: "再試行", style: .default, handler: { [self] _ in
             if reachability.connection == .unavailable {
                 showAlertOffline()
+                print("接続なし")
             }
         })
         alert.addAction(reloadAction)
