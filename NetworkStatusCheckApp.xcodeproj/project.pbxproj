@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC68E1B3DBAC6BBDFCA4BB44 /* Pods_NetworkStatusCheckApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40647477BCBAE1788E1EAEEE /* Pods_NetworkStatusCheckApp.framework */; };
 		E3C41D10257F7F7100D9EDE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C41D0F257F7F7100D9EDE1 /* AppDelegate.swift */; };
 		E3C41D12257F7F7100D9EDE1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C41D11257F7F7100D9EDE1 /* SceneDelegate.swift */; };
 		E3C41D14257F7F7100D9EDE1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C41D13257F7F7100D9EDE1 /* ViewController.swift */; };
@@ -16,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		40647477BCBAE1788E1EAEEE /* Pods_NetworkStatusCheckApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NetworkStatusCheckApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4A71468B644C3D60D4FC09E3 /* Pods-NetworkStatusCheckApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkStatusCheckApp.debug.xcconfig"; path = "Target Support Files/Pods-NetworkStatusCheckApp/Pods-NetworkStatusCheckApp.debug.xcconfig"; sourceTree = "<group>"; };
+		52EF96DE8842509CE3D038CC /* Pods-NetworkStatusCheckApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkStatusCheckApp.release.xcconfig"; path = "Target Support Files/Pods-NetworkStatusCheckApp/Pods-NetworkStatusCheckApp.release.xcconfig"; sourceTree = "<group>"; };
 		E3C41D0C257F7F7100D9EDE1 /* NetworkStatusCheckApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetworkStatusCheckApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3C41D0F257F7F7100D9EDE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3C41D11257F7F7100D9EDE1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,17 +35,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC68E1B3DBAC6BBDFCA4BB44 /* Pods_NetworkStatusCheckApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		80C938626DAE79F5E0D6C7E0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				40647477BCBAE1788E1EAEEE /* Pods_NetworkStatusCheckApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BA151EDB0A093244516A8568 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4A71468B644C3D60D4FC09E3 /* Pods-NetworkStatusCheckApp.debug.xcconfig */,
+				52EF96DE8842509CE3D038CC /* Pods-NetworkStatusCheckApp.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		E3C41D03257F7F7100D9EDE1 = {
 			isa = PBXGroup;
 			children = (
 				E3C41D0E257F7F7100D9EDE1 /* NetworkStatusCheckApp */,
 				E3C41D0D257F7F7100D9EDE1 /* Products */,
+				BA151EDB0A093244516A8568 /* Pods */,
+				80C938626DAE79F5E0D6C7E0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E3C41D20257F7F7700D9EDE1 /* Build configuration list for PBXNativeTarget "NetworkStatusCheckApp" */;
 			buildPhases = (
+				858A6A7767D80233026FF2CC /* [CP] Check Pods Manifest.lock */,
 				E3C41D08257F7F7100D9EDE1 /* Sources */,
 				E3C41D09257F7F7100D9EDE1 /* Frameworks */,
 				E3C41D0A257F7F7100D9EDE1 /* Resources */,
+				9E0C4321AFC5FAB4AF1566B8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -131,6 +158,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		858A6A7767D80233026FF2CC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NetworkStatusCheckApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E0C4321AFC5FAB4AF1566B8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NetworkStatusCheckApp/Pods-NetworkStatusCheckApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NetworkStatusCheckApp/Pods-NetworkStatusCheckApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NetworkStatusCheckApp/Pods-NetworkStatusCheckApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E3C41D08257F7F7100D9EDE1 /* Sources */ = {
@@ -283,6 +352,7 @@
 		};
 		E3C41D21257F7F7700D9EDE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A71468B644C3D60D4FC09E3 /* Pods-NetworkStatusCheckApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -302,6 +372,7 @@
 		};
 		E3C41D22257F7F7700D9EDE1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52EF96DE8842509CE3D038CC /* Pods-NetworkStatusCheckApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
