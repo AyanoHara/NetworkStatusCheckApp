@@ -8,12 +8,16 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var networkStatusImage: UIImageView!
+    
+    let networkImage = #imageLiteral(resourceName: "network")
+    let wifiImage = #imageLiteral(resourceName: "wi-fi")
+    let errorImage = #imageLiteral(resourceName: "error")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        networkStatusImage.image = networkImage
     }
-
-
 }
-
